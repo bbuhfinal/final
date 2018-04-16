@@ -40,9 +40,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/index.html","/header.html","/navigation.html"
-                ,"/footer.html","login.html","/registered.html"
-                ,"/shopping/**"
+        web.ignoring().antMatchers("/index.html","/header.html","/navigation.html","/checkmail.html"
+                ,"/footer.html","login.html","/registered.html","/utils/sendVerifyMail"
+                ,"/shopping/**","/htmlmailtest"
                 ,"/mailtest"
 //                , "/userManage/**","/static/**","/signup.html",
 //                "/ftpuploadimg","/ftptest.html","/manageCase2/**","/examManage/**","/deptManage/**",

@@ -3,10 +3,7 @@ package com.yuukiiii.finalwork.controller.shoppingCon;
 import com.yuukiiii.finalwork.model.Result;
 import com.yuukiiii.finalwork.utils.MailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Yuukiiii
@@ -21,9 +18,12 @@ public class UtilController {
     MailUtil mailUtil;
 
     @GetMapping(value = "/sendVerifyMail")
-    public Result sendVerifyMail(String username,String email){
+    public Result sendVerifyMail(@RequestParam("username") String username,
+                                 @RequestParam("email") String email) throws Exception {
         System.out.println("test1");
         MailUtil mailUtil = new MailUtil();
         return mailUtil.sendVerifyMail(username,email);
     }
+
+
 }

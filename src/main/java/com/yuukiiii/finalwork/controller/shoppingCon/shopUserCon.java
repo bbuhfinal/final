@@ -42,7 +42,7 @@ public class shopUserCon {
 
     @GetMapping(value = "/userVerify")
     @ResponseBody
-    public Result userVerify(String username){
+    public Result userVerify(@RequestParam("username") String username){
         User user = userService.userVerify(username);
         if (user==null)
             return ResultUtil.Error(ResultEnum.UPDATE_FAIL);

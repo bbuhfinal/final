@@ -13,7 +13,6 @@ import java.util.Collection;
 
 @Entity
 @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler"})
-
 public class User implements UserDetails{
 
   @Id
@@ -26,9 +25,10 @@ public class User implements UserDetails{
   private String emailVerified;
   private String datecreated;
 
-  @ManyToMany(cascade = {CascadeType.REFRESH},fetch = FetchType.EAGER)
+  @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
   private List<Role> roles;
 
+  //getters and setters
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -30,6 +30,22 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function () {
+            console.log("test")
+            var username = $("#username").val();
+            var email = $("#email").val();
+            console.log(username+" "+email)
+            $.get(
+                "/mail/sendVerifyMail",
+                {username: username,email: email},
+                function(){
+                    console.log(success)
+                },
+                json
+            );
+        });
+    </script>
     <!-- start-smoth-scrolling -->
 </head>
 
@@ -213,18 +229,6 @@
         */
 
         $().UItoTop({ easingType: 'easeOutQuart' });
-        console.log("test")
-        var username = $("#username").val();
-        var email = $("#email").val();
-        console.log(username+" "+email)
-        $.get(
-            "/utils/sendVerifyMail",
-            {username: username,email: email},
-            function(){
-                console.log(success)
-            },
-            json
-        );
 
     });
 </script>
