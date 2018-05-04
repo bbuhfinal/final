@@ -1,6 +1,10 @@
 spring:
   thymeleaf:
     prefix: classpath:/static/
+    cache: false
+    mode: HTML5
+    encoding: UTF-8
+
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver

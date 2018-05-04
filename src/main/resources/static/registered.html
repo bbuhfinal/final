@@ -182,17 +182,40 @@
 			<h2>注册</h2>
 			<div class="login-form-grids">
 				<h5>请填写个人信息</h5>
-				<form action="/shopping/userRegister" method="post">
-					<input type="text" placeholder="用户名" name="username">
-					<input type="email" placeholder="邮箱地址" name="email">
-					<input type="password" placeholder="密码" required=" " name="password">
+				<form method="post" id="repost">
+					<input type="text" placeholder="用户名" name="username" id="username">
+					<input type="email" placeholder="邮箱地址" name="email" id="email">
+					<input type="password" placeholder="密码" required=" " name="password" id="password">
 					<input type="password" placeholder="确认密码" required=" " >
 					<div class="register-check-box">
 						<div class="check">
 							<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>我同意接受相关条例</label>
 						</div>
 					</div>
-					<input type="submit" value="注册">
+					<input type="button" value="注册" onclick="registerpost()">
+					<script>
+						function registerpost() {
+						    var username = document.getElementById("username").value
+                            var password = document.getElementById("password").value
+                            var email = document.getElementById("email").value
+							$.post(
+
+                                "/shopping/userRegister",
+								{
+								    username: username,
+									email: email,
+									password: password
+								},
+                                function(result,status,xhr){
+                                    alert("一封认证邮件已经发送到您的邮箱，请认证后登陆")
+                                    window.location.href="login.html"
+                                },
+								"json"
+							)
+
+
+                        }
+					</script>
 				</form>
 			</div>
 			<div class="register-home">

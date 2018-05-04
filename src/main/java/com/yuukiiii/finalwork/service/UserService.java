@@ -58,6 +58,7 @@ public class UserService implements UserDetailsService {
         System.out.println(1);
 
         return user;
+
     }
 
     public User userVerify(String username){
@@ -84,11 +85,20 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        logger.debug("name is ______________"+name+"------------------");
         User user = userRepository.findByUsername(name);
         if (user == null) {
-            throw new UsernameNotFoundException("用户名不对");
+            throw new UsernameNotFoundException("用户名不存在");
         }
+        System.out.println("name:"+name);
+        System.out.println("username:"+user.getUsername()+";password:"+user.getPassword());
         return user;
+    }
+
+    public boolean checklogin(String username,String password){
+        User user = userRepository.findByUsername(username);
+        if (password.equals(user.getUsername()))
+            return true;
+        else
+            return false;
     }
 }

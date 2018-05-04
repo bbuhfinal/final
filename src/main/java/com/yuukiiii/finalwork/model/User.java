@@ -71,7 +71,10 @@ public class User implements UserDetails{
 
   @Override
   public boolean isEnabled() {
-    return true;
+    if (this.getEmailVerified()=="1")
+      return true;
+    else
+      return false;
   }
 
 
