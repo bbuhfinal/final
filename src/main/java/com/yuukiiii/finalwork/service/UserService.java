@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Service
-public class UserService implements UserDetailsService {
+public class UserService  {
 
     @Autowired
     private UserRepository userRepository;
@@ -83,16 +83,16 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(name);
-        if (user == null) {
-            throw new UsernameNotFoundException("用户名不存在");
-        }
-        System.out.println("name:"+name);
-        System.out.println("username:"+user.getUsername()+";password:"+user.getPassword());
-        return user;
-    }
+//    @Override
+//    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+//        User user = userRepository.findByUsername(name);
+//        if (user == null) {
+//            throw new UsernameNotFoundException("用户名不存在");
+//        }
+//        System.out.println("name:"+name);
+//        System.out.println("username:"+user.getUsername()+";password:"+user.getPassword());
+//        return user;
+//    }
 
     public boolean checklogin(String username,String password){
         User user = userRepository.findByUsername(username);
